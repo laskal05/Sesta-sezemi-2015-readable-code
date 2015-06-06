@@ -1,11 +1,17 @@
+/* ライブラリの読み込み */
+var fileSystemModule = require( 'fs' );
+
 var filePath = 'recipe-data.txt';
 
-showRecipe( filePath );
+/* ここから処理 */
+var recipeData = readRecipeFromFile( filePath );
+outputRecipe( recipeData );
 
-function showRecipe( file_path ){
-  /* fsライブラリの読み込み */
-  var fileSystemModule = require( 'fs' );
-  var fileContents = fileSystemModule.readFileSync( file_path, 'utf8' ) 
-  /* ※一行分無駄な行が出力されているので注意 */
-  console.log( fileContents );
+function readRecipeFromFile( path ){
+  var fileContents = fileSystemModule.readFileSync( path, 'utf8' ) 
+  return fileContents;
+}
+function outputRecipe( data ) {
+  /* 注意:無駄な行(何も書かれていない行)も出力される */
+  console.log(data);
 }
