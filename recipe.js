@@ -1,6 +1,11 @@
+var filePath = 'recipe-data.txt';
 
-var fileSystemModule = require( 'fs' );
+showRecipe( filePath );
 
-fileSystemModule.readFile( 'recipe-data.txt' , 'utf8', function ( err, text ) {
-    console.log( text );
-});
+function showRecipe( file_path ){
+  var fileSystemModule = require( 'fs' );
+
+  fileSystemModule.readFile( file_path, 'utf8', function ( error, fileContents ) {
+    console.log( fileContents );
+  });
+}
